@@ -1,0 +1,11 @@
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+.label-kost{
+	height: 35px;
+	font-weight: bolder;
+	padding-top: 10px;
+}
+.bg-kost-label{
+	background-color: rgb(238, 239, 236);
+}
