@@ -78,14 +78,12 @@ class KostController extends Controller
             $input['minPay'] = $input['minPay'] * $input['priceMonthly'];
         }
 
-        dd($input);
+        \Auth::user()->kosts()->create($input);
 
-        // \Auth::user()->kosts()->create($input);
-
-        // return redirect()->route('user.dashboard')
-        //         ->with('message', 'Data kost telah tersimpan!')
-        //         ->with('status','success')
-        //         ->with('type','success');
+        return redirect()->route('user.dashboard')
+                ->with('message', 'Data kost telah tersimpan!')
+                ->with('status','success')
+                ->with('type','success');
     }
 
     /**
