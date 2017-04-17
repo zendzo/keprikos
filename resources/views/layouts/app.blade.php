@@ -18,6 +18,7 @@
     <link href="{!! asset('assets/css/AdminLTE.css') !!}" rel="stylesheet">
     <link href="{!! asset('assets/css/plugins/sweetalert.css') !!}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/easy-autocomplete.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
     @yield('pluginsCss')
 
@@ -116,13 +117,14 @@
        </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    {{-- <script src="{!! asset('js/app.js') !!}"></script> --}}
     <script src="{!! asset('assets/js/jquery-2.1.1.min.js') !!}"></script>
     <script src="{!! asset('assets/js/jquery-gmaps-latlon-picker.js') !!}"></script>
     <script src="{!! asset('assets/js/select2.js') !!}"></script>
     <script src="{!! asset('assets/js/plugins/sweetalert/sweetalert.min.js') !!}"></script>
     <!-- Scripts -->
     <script src="{!! asset('assets/js/bootstrap.min.js') !!}"></script>
-    <script src="{{ asset('assets/js/jquery.easy-autocomplete.js') }}"></script>
+    <script src="{!! asset('assets/js/jquery.easy-autocomplete.js') !!}"></script>
     <script type="text/javascript">
       $('.select2').select2();
     </script>
@@ -140,5 +142,6 @@
             }
         });
     </script>
+    
 </body>
 </html>

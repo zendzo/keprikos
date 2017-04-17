@@ -17,7 +17,15 @@ require('bootstrap-sass');
  */
 
 window.Vue = require('vue');
+
 require('vue-resource');
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
+};
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
