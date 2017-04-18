@@ -59,8 +59,8 @@ class KostTableSeeder extends Seeder
 				$kost->phone		= $faker->e164PhoneNumber;
 				$kost->geoName		= $geoName[rand(0,5)];
 				$kost->latitude		= $faker->latitude($min = -90, $max = 90);
-				$kost->logitude		= $faker->longitude($min = -180, $max = 180);
-				$kost->subdsitrict	= $geoName[rand(0,5)];
+				$kost->longitude		= $faker->longitude($min = -180, $max = 180);
+				$kost->subdistrict	= $geoName[rand(0,5)];
 				$kost->city			= $geoName[rand(0,5)];
 				$kost->priceDaily	= rand(10000,100000);
 				$kost->priceWeekly	= rand(50000,500000);
