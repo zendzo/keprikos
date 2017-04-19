@@ -37,7 +37,12 @@ Route::post('activation/resend', ['as' =>  'activation_key_resend.post', 'uses' 
 Route::get('api/users/{user}', function (App\Models\User $user) {
     return $user->email;
 });
-
+// favorite route
 Route::post('favorite/{kost}','FavoritesKostController@favorite');
 
 Route::post('unfavorite/{kost}','FavoritesKostController@unFavorite');
+
+// order route
+Route::get('/order-list',['as'=>'order.list','uses'=>'Kost\OrderController@index']);
+
+Route::post('/order-create',['as'=>'kost.order','uses'=>'Kost\OrderController@store']);

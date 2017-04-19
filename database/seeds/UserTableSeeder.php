@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'email' => $faker->safeEmail,
-                'password' => bcrypt(str_random(10)),
+                'password' => Hash::make('secret'),
                 'activated' => rand(0,1),
                 ]);
         }

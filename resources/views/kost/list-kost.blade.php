@@ -3,7 +3,7 @@
 	@foreach($dataKosts as $kost)
 	  <div class="col-sm-6 col-md-4">
 		    <div class="thumbnail">
-		      <img src="{{ $kost->coverPhoto }}" alt="{{ $kost->name }}" class="img-thumbnail">
+		      <a href="{{ url('/kost-show',$kost->id) }}"><img src="{{ $kost->coverPhoto }}" alt="{{ $kost->name }}" class="img-thumbnail img-responsive" style="height: 250px; width: 350px;"></a>
 		      <div class="caption">
 		        <h3>{{ $kost->name." - ".$kost->city }}</h3>
 		        <p>{{ $kost->address }}</p>

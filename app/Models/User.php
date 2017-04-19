@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\Notifications\PasswordResetNotification;
 use App\Kost;
+use App\Order;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -46,4 +47,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->belongsToMany(Kost::class,'favorites','user_id','kost_id')->withTimeStamps();
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }
