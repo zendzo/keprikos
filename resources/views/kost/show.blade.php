@@ -172,16 +172,12 @@
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-12">
 	@if(count($dataKosts) > 1)
 		<h5 class="label-kost bg-kost-label text-center">Rekomendasi Kost Menarik Lainnya :</h5>
 		@include('kost.list-kost')
 	@else
 		<h5 class="label-kost bg-kost-label text-center">Belum Anda Rekomendasi Lainya Dari Kota {{ $kost->city }}</h5>
 	@endif
-	</div>
-</div>
 @endsection
 
 @section('script')

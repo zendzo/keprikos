@@ -7,7 +7,7 @@
 		      <div class="caption">
 		        <h3>{{ $kost->name." - ".$kost->city }}</h3>
 		        <p>{{ $kost->address }}</p>
-		        <h4>{{ $kost->descriptions }}</h4>
+		        <h4>{{ str_limit($kost->descriptions,15) }}</h4>
 		        <h4 class="text-primary">Rp.{{ $kost->priceMonthly }}/Bln</h4>
 		        <h4 class="text-success">Tersedia : {{ $kost->roomAvailable }} Kmr</h4>
 		        <p>
