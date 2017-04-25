@@ -47,4 +47,9 @@ class Kost extends Model
                             ->where('kost_id',$this->id)
                             ->first();
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
 }

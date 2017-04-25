@@ -7,21 +7,21 @@
 		<!-- small box -->
 	      <div class="small-box bg-aqua">
 	        <div class="inner">
-	          <h3>150</h3>
+	          <h3>{{ $totalOrdered }}</h3>
 
 	          <p>Kost dipesan</p>
 	        </div>
 	        <div class="icon">
 	          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
 	        </div>
-	        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	        <a href="{{ route('confirmation.list') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	      </div>
 		</div>
 		<div class="col-lg-3 col-md-3 col-xs-6">
 			<!-- small box -->
 		  <div class="small-box bg-green">
 		    <div class="inner">
-		      <h3>53<sup style="font-size: 20px">%</sup></h3>
+		      <h3>{{ $totalRented }}</h3>
 
 		      <p>Kost disewa</p>
 		    </div>
@@ -35,12 +35,12 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3>{{ $totalPending }}</h3>
 
-              <p>Total penghuni</p>
+              <p>Pending Konfirmasi</p>
             </div>
             <div class="icon">
-              <i class="fa fa-users" aria-hidden="true"></i>
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>

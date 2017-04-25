@@ -84,10 +84,11 @@
                                         <a href="{{ url('kost-create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Promosi Kost</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> My Kost</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> My Order</a>
+                                        <a href="{{ url('/order-list') }}"><i class="fa fa-bed" aria-hidden="true"></i> My Order 
+                                        <small class="label bg-blue">
+                                            {{ Auth::user()->orders()->count() }}
+                                        </small>
+                                        </a>
                                     </li>
                                     <li>
                                         <a href="{{ url('/logout') }}"

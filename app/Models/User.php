@@ -47,4 +47,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->belongsToMany(Kost::class,'favorites','user_id','kost_id')->withTimeStamps();
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

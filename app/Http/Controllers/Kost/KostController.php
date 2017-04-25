@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Kost;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use App\Http\Requests\CreateKostRequest;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Kost;
 
 class KostController extends Controller
@@ -24,6 +25,7 @@ class KostController extends Controller
     {
         $dataKosts = Kost::select('id','name','city','address','coverPhoto','descriptions','priceMonthly','hpAgent','roomAvailable')
         ->where('roomAvailable','>',0)
+        ->orderBy('created_at','desc')
         ->paginate(9);
 
         return view('kost.index',compact('dataKosts'));
@@ -78,7 +80,7 @@ class KostController extends Controller
             $input['minPay'] = $input['minPay'] * $input['priceMonthly'];
         }
 
-        \Auth::user()->kosts()->create($input);
+        Auth::user()->kosts()->create($input);
 
         return redirect()->route('user.dashboard')
                 ->with('message', 'Data kost telah tersimpan!')
@@ -94,7 +96,11 @@ class KostController extends Controller
      */
     public function show($id)
     {
-        $kost = Kost::findOrFail($id);
+        $kost = Kost::find($id);
+
+        if (!$kost) {
+            return back()->with('message','Data tidak ditemukan!')->with('status','warning')->with('type','error');
+        }
 
         $dataKosts = Kost::select('id','name','city','address','coverPhoto','descriptions','priceMonthly','hpAgent','roomAvailable')
         ->where('city','like',$kost->city)

@@ -553,8 +553,8 @@
                 </div>
                </div><!-- /.box-body -->
               <div class="box-footer">
-                <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                <button type="reset" class="btn btn-default col-sm-5">Cancel</button>
+                <button type="submit" class="btn btn-info pull-right col-sm-5">Save</button>
               </div>
               <!-- /.box-footer -->
             </form>

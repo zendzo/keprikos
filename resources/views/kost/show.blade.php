@@ -146,7 +146,11 @@
 											<th colspan="2" class="text-success">Pembayaran min : Rp.  {{ $kost->minPay }}</th>
 										</tr>
 									</table>
-									<a href="#" class="btn btn-warning" style="width: 100%; margin-bottom: 10px;">HUBUNGI KOST</a>
+									@if(Auth::check())
+										@include('partials.order-button.order')
+									@else
+										@include('partials.order-button.contact')
+									@endif
 										<table class="table">
 											<tr>
 												<th class="text-center text-success">
@@ -168,16 +172,12 @@
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-12">
 	@if(count($dataKosts) > 1)
 		<h5 class="label-kost bg-kost-label text-center">Rekomendasi Kost Menarik Lainnya :</h5>
 		@include('kost.list-kost')
 	@else
 		<h5 class="label-kost bg-kost-label text-center">Belum Anda Rekomendasi Lainya Dari Kota {{ $kost->city }}</h5>
 	@endif
-	</div>
-</div>
 @endsection
 
 @section('script')
@@ -213,5 +213,7 @@ function showMap() {
 @endsection
 
 @section('pluginsCss')
+<style>
 
+</style>
 @endsection
