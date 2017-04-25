@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-{{ dd() }}
+  @include('partials.tables.order-list-table')
 @endsection
