@@ -47,7 +47,7 @@ class OrderController extends Controller
 
        $input = $request->all();
 
-
+       // deformat number_format from database
        $totalPrice = floatval(preg_replace('/[^\d.]/', '',$input['priceMonthly'])) * $input['totalMonths'] * $input['qty'];
 
        Auth::user()->orders()->create([
@@ -55,8 +55,6 @@ class OrderController extends Controller
         'qty'           => $input['qty'],
         'total_month'   => $input['totalMonths'],
         'total_price'   => $totalPrice,
-        'day_in'        => Carbon::now(),
-        'day_out'       => Carbon::now()->addMonths($input['totalMonths']),
         ]);
 
        return redirect()->route('user.dashboard')
