@@ -42,8 +42,8 @@ Route::group(['namespace' => 'User', 'prefix' => 'user.dashboard', 'middleware' 
 {
     Route::get('/', [
     	'as' => 'user.dashboard',
-    	'uses' => 'PagesController@getDashboard
-    	']);
+    	'uses' => 'PagesController@getDashboard'
+    	]);
 
     Route::get('/blank', [
     	'as' => 'user.blank',
