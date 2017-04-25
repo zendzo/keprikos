@@ -15,6 +15,10 @@
 		        	{{ $kost->hpAgent }}
 		        </p>
 		        <p><a href="{{ url('/kost-show',$kost->id) }}" class="btn btn-primary" role="button" target="_blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> | Lihat Kost</a></p>
+		        {{-- jika kost milik user, tampilkan tombol edit --}}
+		        @if($kost->user_id == Auth::id())
+		        	<p><a href="{{ url('/kost-show',$kost->id) }}" class="btn btn-warning" role="button" target="_blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> | Edit Kost</a></p>
+		        @endif
 		        @if(Auth::check())
 		        	<p>
 		        	<favorite :kost={{ $kost->id }} :favorited={{ $kost->favorited() ? 'true':'false' }}></favorite>
