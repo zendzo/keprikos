@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Kost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateKostRequest;
+use App\Http\Requests\EditKostRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Kost;
@@ -23,7 +24,7 @@ class KostController extends Controller
      */
     public function index()
     {
-        $dataKosts = Kost::select('id','name','city','address','coverPhoto','descriptions','priceMonthly','hpAgent','roomAvailable')
+        $dataKosts = Kost::select('id','name','city','address','coverPhoto','descriptions','priceMonthly','hpAgent','roomAvailable','gender')
         ->where('roomAvailable','>',0)
         ->orderBy('created_at','desc')
         ->paginate(9);
@@ -52,40 +53,42 @@ class KostController extends Controller
 
         $input = $request->all();
 
-        $folderImage = config('settings.folder_upload_location').Carbon::now(new \DateTimeZone('Asia/Jakarta'))
-                        ->toDateString()."-".$request['name']."/";
+        // $folderImage = config('settings.folder_upload_location').Carbon::now(new \DateTimeZone('Asia/Jakarta'))
+        //                 ->toDateString()."-".$request['name']."/";
 
-        if ($files = $request->file()) {
-            $dataPhotos = [];
-            foreach ($files as $fileKey => $fileValue) {
-                if ($fileValue->isValid()) {
-                    $fileName = md5(rand(0,2000)).'.'.$request->$fileKey->getClientOriginalExtension();
-                    array_push($dataPhotos, [$fileKey,$folderImage.$fileName]);
-                    $request->$fileKey->move(public_path($folderImage), $fileName);
-                }
-            }
-        }
+        // if ($files = $request->file()) {
+        //     $dataPhotos = [];
+        //     foreach ($files as $fileKey => $fileValue) {
+        //         if ($fileValue->isValid()) {
+        //             $fileName = md5(rand(0,2000)).'.'.$request->$fileKey->getClientOriginalExtension();
+        //             array_push($dataPhotos, [$fileKey,$folderImage.$fileName]);
+        //             $request->$fileKey->move(public_path($folderImage), $fileName);
+        //         }
+        //     }
+        // }
 
-        foreach ($dataPhotos as $key => $value) {
-            if(isset($input[$value[0]]))
-            {
-                $input[$value[0]] = $value[1];
-            }
-        }
+        // foreach ($dataPhotos as $key => $value) {
+        //     if(isset($input[$value[0]]))
+        //     {
+        //         $input[$value[0]] = $value[1];
+        //     }
+        // }
 
-        if (is_null($input['otherFacilityPhoto'])) {
-            $input['otherFacilityPhoto'] = null;
-        }
-        if ($input['minPay']) {
-            $input['minPay'] = $input['minPay'] * $input['priceMonthly'];
-        }
+        // if (is_null($input['otherFacilityPhoto'])) {
+        //     $input['otherFacilityPhoto'] = null;
+        // }
 
-        Auth::user()->kosts()->create($input);
+        // if(is_null($input['minPay'])){
+        //     $input['minPay'] = 1;
+        // }
 
-        return redirect()->route('user.dashboard')
-                ->with('message', 'Data kost telah tersimpan!')
-                ->with('status','success')
-                ->with('type','success');
+        // Auth::user()->kosts()->create($input);
+
+        // return redirect()->route('user.dashboard')
+        //         ->with('message', 'Data kost telah tersimpan!')
+        //         ->with('status','success')
+        //         ->with('type','success');
+        return $input;
     }
 
     /**
@@ -128,7 +131,13 @@ class KostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kost = Kost::find($id);
+
+        if (!$kost) {
+            return back()->with('message','Data tidak ditemukan!')->with('status','warning')->with('type','error');
+        }
+
+        return view('kost.edit',compact('kost'));
     }
 
     /**
@@ -138,9 +147,39 @@ class KostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditKostRequest $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $kost = Kost::find($id);
+
+        $folderImage = config('settings.folder_upload_location').Carbon::now(new \DateTimeZone('Asia/Jakarta'))
+                        ->toDateString()."-".$request['name']."/";
+
+        if ($files = $request->file()) {
+            $dataPhotos = [];
+            foreach ($files as $fileKey => $fileValue) {
+                if ($fileValue->isValid()) {
+                    $fileName = md5(rand(0,2000)).'.'.$request->$fileKey->getClientOriginalExtension();
+                    array_push($dataPhotos, [$fileKey,$folderImage.$fileName]);
+                    $request->$fileKey->move(public_path($folderImage), $fileName);
+                }
+            }
+        }
+
+        foreach ($dataPhotos as $key => $value) {
+            if(isset($input[$value[0]]))
+            {
+                $input[$value[0]] = $value[1];
+            }
+        }
+
+        $kost->update($input);
+
+        return redirect()->route('user.dashboard')
+                ->with('message', 'Data kost telah tersimpan!')
+                ->with('status','success')
+                ->with('type','success');
     }
 
     /**
@@ -165,7 +204,9 @@ class KostController extends Controller
 
         $dataKosts = Kost::where('name','like',"%".$input."%")
                     ->orWhere('address','like',"%".$input."%")
-                    ->orWhere('city','like',"%".$input."%")->limit(9)->paginate(9);
+                    ->orWhere('city','like',"%".$input."%")
+                    ->orderBy('created_at','desc')
+                    ->limit(9)->paginate(9);
 
         return view('kost.search',compact('dataKosts','input'));
     }

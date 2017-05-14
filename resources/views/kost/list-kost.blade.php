@@ -5,19 +5,33 @@
 		    <div class="thumbnail">
 		      <a href="{{ url('/kost-show',$kost->id) }}"><img src="{{ $kost->coverPhoto }}" alt="{{ $kost->name }}" class="img-thumbnail img-responsive" style="height: 250px; width: 350px;"></a>
 		      <div class="caption">
-		        <h3>{{ $kost->name." - ".$kost->city }}</h3>
-		        <p>{{ $kost->address }}</p>
+		        <h3>{{ str_limit($kost->name." - ".$kost->city,25) }}</h3>
+		        <p>{{ str_limit($kost->address,55) }}</p>
 		        <h4>{{ str_limit($kost->descriptions,15) }}</h4>
-		        <h4 class="text-primary">Rp.{{ $kost->priceMonthly }}/Bln</h4>
+		        <h4 class="text-primary">Rp.{{ number_format($kost->priceMonthly ,2,',','.') }}/Bln</h4>
 		        <h4 class="text-success">Tersedia : {{ $kost->roomAvailable }} Kmr</h4>
 		        <p>
 		        	<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
 		        	{{ $kost->hpAgent }}
 		        </p>
+		        <p>
+		        {{-- tampilkan label kelamin --}}
+		        @if($kost->gender)
+	        		@if($kost->gender == 1)
+	        			<button class="btn btn-info disabled">Laki-Laki</button>
+	        		@elseif($kost->gender == 2)
+	        			<button class="btn btn-success disabled">Perempuan</button>
+	        		@else
+	        			<button class="btn btn-danger disabled">Campur</button>
+	        		@endif
+		        @endif
+		        </p>
 		        <p><a href="{{ url('/kost-show',$kost->id) }}" class="btn btn-primary" role="button" target="_blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> | Lihat Kost</a></p>
 		        {{-- jika kost milik user, tampilkan tombol edit --}}
-		        @if($kost->user_id == Auth::id())
-		        	<p><a href="{{ url('/kost-show',$kost->id) }}" class="btn btn-warning" role="button" target="_blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> | Edit Kost</a></p>
+		        @if(Auth::check())
+			        @if($kost->user_id == Auth::id())
+			        	<p><a href="{{ route('kost.edit',$kost->id) }}" class="btn btn-warning" role="button" target="_blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> | Edit Kost</a></p>
+			        @endif
 		        @endif
 		        @if(Auth::check())
 		        	<p>

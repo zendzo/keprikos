@@ -23,6 +23,12 @@ function previewImage(inputName,fieldName,previewName){
 	});
 }
 
+function previewImageOnLoad(previewId,previewValue){
+	$(document).ready(function(){
+		$(previewId).attr('src',previewValue).fadeIn(1500);
+	});
+}
+
 // if input file change show the image in the div.preview
 	$('div[id*="preview"]').hide();
 	previewImage("#inputCoverPhoto","#coverPhoto","#previewCoverPhoto");

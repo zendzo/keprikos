@@ -112,7 +112,15 @@
 									<h5 class="label-kost">{{ $kost->bathRoomFacility }}</h5>
 									<h5 class="label-kost">{{ $kost->generalFacility }}</h5>
 									<h5 class="label-kost">{{ $kost->otherGeneralFacility }}</h5>
-									<h5 class="label-kost">{{ $kost->parking }}</h5>
+									<h5 class="label-kost">
+										@if($kost->parking == 1)
+										Mobil
+										@elseif($kost->parking == 2)
+										Motor
+										@else
+										Sepeda
+										@endif
+									</h5>
 									<h5 class="label-kost">{{ $kost->nearByFacility,$kost->otherNearByFacility }}</h5>
 									<h5 class="label-kost">{{ $kost->remarks }}</h5>
 									<h5 class="label-kost">{{ $kost->descriptions }}</h5>
@@ -127,23 +135,23 @@
 								<div class="panel-body">
 									<table class="table table-bordered">
 										<tr>
-											<th>Rp. {{ $kost->priceYearly }}</th>
+											<th>Rp. {{ number_format($kost->priceYearly ,2,',','.') }}</th>
 											<th>/tahun</th>
 										</tr>
 										<tr>
-											<th>Rp. {{ $kost->priceMonthly }}</th>
+											<th>Rp. {{ number_format($kost->priceMonthly ,2,',','.') }}</th>
 											<th>/bulan</th>
 										</tr>
 										<tr>
-											<th>Rp. {{ $kost->priceWeekly }}</th>
+											<th>Rp. {{ number_format($kost->priceWeekly ,2,',','.') }}</th>
 											<th>/minggu</th>
 										</tr>
 										<tr>
-											<th>Rp. {{ $kost->priceDaily }}</th>
+											<th>Rp. {{ number_format($kost->priceDaily ,2,',','.') }}</th>
 											<th>/hari</th>
 										</tr>
 										<tr>
-											<th colspan="2" class="text-success">Pembayaran min : Rp.  {{ $kost->minPay }}</th>
+											<th colspan="2" class="text-success">Pembayaran min : Rp.  {{ $kost->minPay * $kost->priceMonthly }}</th>
 										</tr>
 									</table>
 									@if(Auth::check())

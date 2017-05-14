@@ -26,7 +26,7 @@ class RenameKostsOtherFacilityPhotoToNullable extends Migration
     public function down()
     {
         Schema::table('kosts', function (Blueprint $table) {
-            $table->string('otherFacilityPhoto');
+            $table->string('otherFacilityPhoto')->change();
         });
     }
 }

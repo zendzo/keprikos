@@ -1,4 +1,4 @@
-<a href="#" class="btn btn-success" style="width: 100%; margin-bottom: 10px;" data-toggle="modal" data-target="#modal">
+<a href="#" class="btn btn-success {{ $kost->user_id == Auth::id() ? "disabled":"" }}" style="width: 100%; margin-bottom: 10px;" data-toggle="modal" data-target="#modal">
 <span class="glyphicon glyphicon-cart"></span> PESAN KOST
 </a>
 
@@ -22,7 +22,7 @@
 
 	                  <div class="attachment-text">
 	                    {{ $kost->descriptions }}<a href="#">more</a>
-	                    <h4 class="text-success">Rp. {{ $kost->priceMonthly }}/bln</h4>
+	                    <h4 class="text-success">Rp. {{ number_format($kost->priceMonthly ,0,'.',',') }}/bln</h4>
 	                  </div>
 	                  <!-- /.attachment-text -->
 	                </div>

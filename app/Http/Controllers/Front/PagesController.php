@@ -11,10 +11,6 @@ class PagesController extends Controller
 
    public function getHome()
    {
-   		if (Auth::check()) {
-   			return redirect('/kost-list');
-   		}
-
    		return view('front.pages.home');
    }
 }

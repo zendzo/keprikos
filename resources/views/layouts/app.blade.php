@@ -52,8 +52,23 @@
                       <div class="form-group">
                         <input name="keyword" type="text" class="form-control" id="search-kost" placeholder="Cari" style="width: 300px;">
                       </div>
-                      <button type="submit" class="btn btn-info" id="search-kost-button">
-                        <i class="fa fa-search" aria-hidden="true"></i> Cari</button>
+                      <button type="submit" class="btn btn-info" id="search-kost-button"><i class="fa fa-search" aria-hidden="true"></i> Cari</button>
+                      {{-- tombol group category --}}
+                      <div class="btn-group">
+                          <button type="button" class="btn btn-success">Category</button>
+                          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url("/") }}">Kota</a></li>
+                            <li><a href="{{ url("/search-by-gender?gender=laki-laki") }}">Kost Laki-Laki</a></li>
+                            <li><a href="{{ url("/search-by-gender?gender=perempuan") }}">Kost Perempuan</a></li>
+                            <li><a href="{{ url("/search-by-gender?gender=campur") }}">Kost Campur</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ url("kost-list") }}">Semua Kost Terbaru</a></li>
+                          </ul>
+                    </div>
                     </form>
                 </div>
 
@@ -120,6 +135,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     {{-- <script src="{!! asset('js/app.js') !!}"></script> --}}
     <script src="{!! asset('assets/js/jquery-2.1.1.min.js') !!}"></script>
+    <!-- jquery-gmaps-latlon-picker.js -->
     <script src="{!! asset('assets/js/jquery-gmaps-latlon-picker.js') !!}"></script>
     <script src="{!! asset('assets/js/select2.js') !!}"></script>
     <script src="{!! asset('assets/js/plugins/sweetalert/sweetalert.min.js') !!}"></script>
@@ -127,7 +143,9 @@
     <script src="{!! asset('assets/js/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('assets/js/jquery.easy-autocomplete.js') !!}"></script>
     <script type="text/javascript">
-      $('.select2').select2();
+      $(function(){
+        $('.select2').select2();
+    });
     </script>
     @yield('sweetAlert')
     @include('notifications.sweetalert')
@@ -143,6 +161,5 @@
             }
         });
     </script>
-    
 </body>
 </html>

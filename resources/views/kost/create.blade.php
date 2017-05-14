@@ -17,7 +17,7 @@
                   <label for="inputName" class="col-sm-2 control-label">Nama Kost</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="name" id="inputName" placeholder="(ex: Kost Mawar Bintan)" type="text" required>
+                    <input class="form-control" name="name" id="inputName" placeholder="(ex: Kost Mawar Bintan)" type="text" required value="{{ old('name') }}">
                   </div>
                 </div>
                 <!-- form group -->
@@ -105,7 +105,7 @@
 						<div class="col-sm-5">
 							<span><b>Longitude</b></span>
 							<input class="gllpLongitude form-control" name="longitude" type="text" required/>
-							<input type="hidden" class="gllpZoom" value="3"/>
+							<input type="text" class="gllpZoom hidden" value="15"/>
 						</div>
 					</div><!-- form group 3 google maap -->
 					<!-- form group -->
@@ -247,7 +247,7 @@
                 	<label for="inputRoomFacility" class="col-sm-2 control-label">Fasilitas Kamar</label>
 
                 	<div class="col-sm-10">
-                		<select name="roomFacility" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                		<select name="roomFacility" id="inputRoomFacility" class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
 		                  <option value="Bed">Bed</option>
 		                  <option value="Almari">Almari</option>
 		                  <option value="Meja Belajar">Meja Belajar</option>
@@ -280,7 +280,7 @@
                 	<label for="inputBathRoomFacility" class="col-sm-2 control-label">Fasilitas Kamar Mandi</label>
 
                 	<div class="col-sm-10">
-                		<select name="bathRoomFacility" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                		<select name="bathRoomFacility" id="inputBathRoomFacility" class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
                 		<option value="Kamar Mandi Dalam">Kamar Mandi Dalam</option>
                 		<option value="Kamar Mandi Luar">Kamar Mandi Luar</option>
                 		<option value="Kloset Duduk">Kloset Duduk</option>
@@ -307,7 +307,7 @@
                 	<label for="inputParking" class="col-sm-2 control-label">Parkir</label>
 
                 	<div class="col-sm-10">
-                		<select name="parking" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                		<select name="parking" class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
                 		<option value="1">Mobil</option>
                 		<option value="2">Motor</option>
                 		<option value="3">Sepeda</option>
@@ -319,7 +319,7 @@
                 	<label for="inputGeneralFacility" class="col-sm-2 control-label">Fasilitas Umum Kost</label>
 
                 	<div class="col-sm-10">
-                		<select name="generalFacility" id="inputGeneralFacility" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                		<select name="generalFacility" id="inputGeneralFacility" class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
                 		<option value="Ruang Tamu">Ruang Tamu</option>
                 		<option value="Ruang Makan">Ruang Makan</option>
                 		<option value="Dapur">Dapur</option>
@@ -348,7 +348,7 @@
                 	<label for="inputNearByFacility" class="col-sm-2 control-label">Akses Lingkungan</label>
 
                 	<div class="col-sm-10">
-                		<select name="nearByFacility" id="inputNearByFacility" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                		<select name="nearByFacility" id="inputNearByFacility" class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Pilih Fasilitas Kamar" style="width: 100%;" tabindex="-1" aria-hidden="true">
                 		<option value="Rumah Makan">Rumah Makan</option>
                 		<option value="Mini Market">Mini Market</option>
                 		<option value="Laundry">Laundry</option>
@@ -554,7 +554,7 @@
                </div><!-- /.box-body -->
               <div class="box-footer">
                 <button type="reset" class="btn btn-default col-sm-5">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right col-sm-5">Save</button>
+                <button type="submit" id="save" class="btn btn-info pull-right col-sm-5">Save</button>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -565,7 +565,8 @@
 
 @section('script')
 	@include('kost.photo-preview-script')
-	<!-- jquery-gmaps-latlon-picker.js -->
+	<!-- jquery-gmaps-latlon-picker.js deteksi lokasi dengan navigator-->
+  @include('kost.auto-detect-location')
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVHgvRIsfyRFZncJe1GDq5c9oOBtyVa6s"></script>
 @endsection
 
