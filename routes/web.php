@@ -22,6 +22,17 @@ Route::get('/kost-search',[
 	'uses' => 'Kost\KostController@search'
 	]);
 
+// search by category
+Route::get('/search-by-gender',[
+	'as' => 'search.gender',
+	'uses' => 'Kost\SearchController@searchByGender'
+	]);
+
+Route::get('/search-by-price',[
+	'as' => 'search.price',
+	'uses' => 'Kost\SearchController@searchByPrice'
+	]);
+
 Route::group(['prefix' => 'api/v1'],function()
 {
 	Route::get('/kost-search-autocomplete',['as' => 'kost.autocomplete','uses' => 'Kost\KostController@searchAutocomplete']);
@@ -32,9 +43,20 @@ Route::get('/kost-create',[
 	'uses' => 'Kost\KostController@create'
 	]);
 
+
 Route::post('/kost-store',[
 	'as' => 'kost.store',
 	'uses' => 'Kost\KostController@store'
+	]);
+
+Route::get('/kost-edit/{id}/edit',[
+	'as' => 'kost.edit',
+	'uses' => 'Kost\KostController@edit'
+	]);
+
+Route::patch('/kost-update/{id}',[
+	'as' => 'kost.update',
+	'uses' => 'Kost\KostController@update'
 	]);
 
 // admin
@@ -98,3 +120,11 @@ Route::get('/confirmation-strore',[
 	'as'=>'confirmation.store',
 	'uses'=>'ConfirmationOderController@store'
 	]);
+
+Route::get('test',function(){
+	return view('welcome');
+});
+use Illuminate\Http\Request;
+Route::post('/test',function(Request $request){
+	return $request->all();
+});
