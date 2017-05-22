@@ -167,10 +167,12 @@ class KostController extends Controller
             }
         }
 
-        foreach ($dataPhotos as $key => $value) {
-            if(isset($input[$value[0]]))
-            {
-                $input[$value[0]] = $value[1];
+        if (!empty($dataPhotos)) {
+            foreach ($dataPhotos as $key => $value) {
+                if(isset($input[$value[0]]))
+                {
+                    $input[$value[0]] = $value[1];
+                }
             }
         }
 
