@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@section('pluginsCss')
+<style>
+    .city{
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    }
+    .city:hover{
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+    }
+</style>
+@endsection
+
 @section('content')
     <header>
         <div class="header-content">
@@ -15,56 +28,49 @@
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail">
                 <a href="{{ url("kost-search?keyword=anambas") }}">
-                    <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/anambas.jpg") }}" height="230px" width="210px">
+                    <img class="img-rounded img-responsive city" src="{{ asset("assets/img/categories/anambas-color.jpg") }}" height="230px" width="210px">
+                </a>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="thumbnail">
+                <a href="{{ url("kost-search?keyword=anambas") }}">
+                    <img class="img-rounded img-responsive city" src="{{ asset("assets/img/categories/batam-color.png") }}" height="230px" width="210px">
                 </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail">
                 <a href="{{ url("kost-search?keyword=batam") }}">
-                    <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/batam.png") }}"  height="230px" width="210px">
+                    <img class="img-rounded img-responsive city" src="{{ asset("assets/img/categories/bintan-color.png") }}"  height="230px" width="210px">
                 </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail">
                 <a href="{{ url("kost-search?keyword=bintan") }}">
-                    <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/bintan.png") }}"  height="230px" width="210px">
+                    <img class="img-rounded img-responsive city" src="{{ asset("assets/img/categories/karimun-color.png") }}"  height="230px" width="210px">
                 </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail">
                 <a href="{{ url("kost-search?keyword=karimun") }}">
-                    <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/karimun.gif") }}"  height="230px" width="210px">
+                    <img class="img-rounded img-responsive city" src="{{ asset("assets/img/categories/lingga-color.png") }}"  height="230px" width="210px">
                 </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail">
                     <a href="{{ url("kost-search?keyword=lingga") }}">
-                        <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/lingga.png") }}"  height="230px" width="210px">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="thumbnail">
-                <a href="{{ url("kost-search?keyword=anambas") }}">
-                        <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/anambas.jpg") }}"  height="230px" width="210px">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="thumbnail">
-                <a href="{{ url("kost-search?keyword=natuna") }}">
-                        <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/natuna.png") }}"  height="230px" width="210px">
+                        <img class="img-rounded img-responsive city" src="{{ asset("assets/img/categories/natuna-color.png") }}"  height="230px" width="210px">
                     </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail">
                 <a href="{{ url("kost-search?keyword=tanjungpinang") }}">
-                        <img class="img-rounded img-responsive" src="{{ asset("assets/img/categories/tanjungpinang.png") }}"  height="230px" width="210px">
+                        <img class="img-rounded img-responsive city" src="{{ asset("assets/img/categories/tanjungpinang-color.png") }}"  height="230px" width="210px">
                     </a>
                 </div>
             </div>
