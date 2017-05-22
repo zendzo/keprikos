@@ -53,42 +53,42 @@ class KostController extends Controller
 
         $input = $request->all();
 
-        // $folderImage = config('settings.folder_upload_location').Carbon::now(new \DateTimeZone('Asia/Jakarta'))
-        //                 ->toDateString()."-".$request['name']."/";
+        $folderImage = config('settings.folder_upload_location').Carbon::now(new \DateTimeZone('Asia/Jakarta'))
+                        ->toDateString()."-".$request['name']."/";
 
-        // if ($files = $request->file()) {
-        //     $dataPhotos = [];
-        //     foreach ($files as $fileKey => $fileValue) {
-        //         if ($fileValue->isValid()) {
-        //             $fileName = md5(rand(0,2000)).'.'.$request->$fileKey->getClientOriginalExtension();
-        //             array_push($dataPhotos, [$fileKey,$folderImage.$fileName]);
-        //             $request->$fileKey->move(public_path($folderImage), $fileName);
-        //         }
-        //     }
-        // }
+        if ($files = $request->file()) {
+            $dataPhotos = [];
+            foreach ($files as $fileKey => $fileValue) {
+                if ($fileValue->isValid()) {
+                    $fileName = md5(rand(0,2000)).'.'.$request->$fileKey->getClientOriginalExtension();
+                    array_push($dataPhotos, [$fileKey,$folderImage.$fileName]);
+                    $request->$fileKey->move(public_path($folderImage), $fileName);
+                }
+            }
+        }
 
-        // foreach ($dataPhotos as $key => $value) {
-        //     if(isset($input[$value[0]]))
-        //     {
-        //         $input[$value[0]] = $value[1];
-        //     }
-        // }
+        foreach ($dataPhotos as $key => $value) {
+            if(isset($input[$value[0]]))
+            {
+                $input[$value[0]] = $value[1];
+            }
+        }
 
-        // if (is_null($input['otherFacilityPhoto'])) {
-        //     $input['otherFacilityPhoto'] = null;
-        // }
+        if (is_null($input['otherFacilityPhoto'])) {
+            $input['otherFacilityPhoto'] = null;
+        }
 
-        // if(is_null($input['minPay'])){
-        //     $input['minPay'] = 1;
-        // }
+        if(is_null($input['minPay'])){
+            $input['minPay'] = 1;
+        }
 
-        // Auth::user()->kosts()->create($input);
+        Auth::user()->kosts()->create($input);
 
-        // return redirect()->route('user.dashboard')
-        //         ->with('message', 'Data kost telah tersimpan!')
-        //         ->with('status','success')
-        //         ->with('type','success');
-        return $input;
+        return redirect()->route('user.dashboard')
+                ->with('message', 'Data kost telah tersimpan!')
+                ->with('status','success')
+                ->with('type','success');
+        // return $input;
     }
 
     /**
