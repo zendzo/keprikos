@@ -35,7 +35,10 @@ Route::get('/search-by-price',[
 
 Route::group(['prefix' => 'api/v1'],function()
 {
-	Route::get('/kost-search-autocomplete',['as' => 'kost.autocomplete','uses' => 'Kost\KostController@searchAutocomplete']);
+	Route::get('/kost-search-autocomplete',[
+		'as' => 'kost.autocomplete',
+		'uses' => 'Kost\KostController@searchAutocomplete'
+	]);
 });
 
 Route::get('/kost-create',[
@@ -130,11 +133,3 @@ Route::get('/confirmation-strore',[
 	'as'=>'confirmation.store',
 	'uses'=>'ConfirmationOderController@store'
 	]);
-
-Route::get('test',function(){
-	return view('welcome');
-});
-use Illuminate\Http\Request;
-Route::post('/test',function(Request $request){
-	return $request->all();
-});
