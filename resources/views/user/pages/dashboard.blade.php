@@ -51,7 +51,7 @@
             <div class="inner">
               <h3>{{ Auth::user()->kosts()->sum('roomAvailable') }}</h3>
 
-              <p>Sisa kama tersedia</p>
+              <p>Sisa kamar tersedia</p>
             </div>
             <div class="icon">
               <i class="fa fa-pie-chart" aria-hidden="true"></i>
