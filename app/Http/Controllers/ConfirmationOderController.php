@@ -22,7 +22,7 @@ class ConfirmationOderController extends Controller
      */
     public function index()
     {
-        $kosts = Auth::user()->kosts;
+      $kosts = Auth::user()->kosts;
 
         $kostId = [];
 
@@ -33,6 +33,36 @@ class ConfirmationOderController extends Controller
         $orders = Order::whereIn('kost_id',$kostId)->get();
 
         return view('confirmation.index',compact('orders'));
+    }
+
+    public function paid()
+    {
+      $kosts = Auth::user()->kosts;
+
+      $kostId = [];
+
+      foreach ($kosts as $kost) {
+          array_push($kostId, $kost['id']);
+      }
+
+      $orders = Order::whereIn('kost_id',$kostId)->whereNotNull('paid_at')->get();
+
+      return view('confirmation.index',compact('orders'));
+    }
+
+    public function pending()
+    {
+      $kosts = Auth::user()->kosts;
+
+      $kostId = [];
+
+      foreach ($kosts as $kost) {
+          array_push($kostId, $kost['id']);
+      }
+
+      $orders = Order::whereIn('kost_id',$kostId)->whereNull('paid_at')->get();
+
+      return view('confirmation.index',compact('orders'));
     }
 
     /**

@@ -28,7 +28,7 @@
 		    <div class="icon">
 		      <i class="fa fa-bar-chart" aria-hidden="true"></i>
 		    </div>
-		    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		    <a href="{{ route('confirmation.paid') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 		  </div>
 		</div>
 		<div class="col-lg-3 col-md-3 col-xs-6">
@@ -42,7 +42,7 @@
             <div class="icon">
               <i class="fa fa-check-circle" aria-hidden="true"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('confirmation.pending') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
 		</div>
 		<div class="col-lg-3 col-md-3 col-xs-6">

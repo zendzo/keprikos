@@ -116,6 +116,16 @@ Route::get('/confirmation-order',[
 	'uses'=>'ConfirmationOderController@index'
 	]);
 
+Route::get('/confirmation-paid',[
+	'as'=>'confirmation.paid',
+	'uses'=>'ConfirmationOderController@paid'
+	]);
+
+Route::get('/confirmation-pending',[
+	'as'=>'confirmation.pending',
+	'uses'=>'ConfirmationOderController@pending'
+	]);
+
 Route::get('/confirmation-strore',[
 	'as'=>'confirmation.store',
 	'uses'=>'ConfirmationOderController@store'
