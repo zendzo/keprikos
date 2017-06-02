@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Kost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Kost;
+use Validator;
 
 class SearchController extends Controller
 {
@@ -44,6 +45,19 @@ class SearchController extends Controller
 		
 		$min = $input['min'];
 		$max = $input['max'];
+
+		$validator = Validator::make($request->all(), [
+            'min' => 'required|numeric|min:10000',
+            'max' => 'required|numeric|min:10000',
+        ]);
+
+		if($validator->fails())
+		{
+			return redirect()->back()->withErrors($validator)->withInput()
+							->with('message','Filed Harus diisi')
+							->with('status','warning')
+							->with('type','warning');
+		}
 
 		$dataKosts = Kost::whereBetween('priceMonthly',[$min,$max])->get();
 

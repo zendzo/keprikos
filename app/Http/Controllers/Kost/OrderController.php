@@ -41,8 +41,8 @@ class OrderController extends Controller
 
        if ($preventSelfOrder) {
             return back()->with('message','Anda tidak bisa memesan kost ini')
-                        ->with('status','warning')->
-                        with('type','warning');
+                        ->with('status','warning')
+                        ->with('type','warning');
        }
 
        $input = $request->all();
