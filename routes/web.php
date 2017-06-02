@@ -38,6 +38,16 @@ Route::post('/search-by-price',[
 'uses' => 'Kost\SearchController@searchByPriceResults'
 ]);
 
+Route::get('/search-by-facilities',[
+	'as' => 'search.facilities',
+	'uses' => 'Kost\SearchController@searchByFacilites'
+	]);
+
+Route::post('/search-by-facilities',[
+	'as' => 'search.facilities.results',
+	'uses' => 'Kost\SearchController@searchByFacilitesResults'
+	]);
+
 Route::group(['prefix' => 'api/v1'],function()
 {
 	Route::get('/kost-search-autocomplete',[

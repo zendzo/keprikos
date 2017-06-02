@@ -68,6 +68,7 @@
                             <li class="divider"></li>
                             <li><a href="{{ url("kost-list") }}">Semua Kost Terbaru</a></li>
                             <li><a href="{{ url("/search-by-price") }}">Cari Berdasarkan Harga</a></li>
+                            <li><a href="{{ url("/search-by-facilities") }}">Cari Berdasarkan Fasilitas</a></li>
                           </ul>
                     </div>
                     </form>

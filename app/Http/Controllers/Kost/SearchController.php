@@ -63,4 +63,20 @@ class SearchController extends Controller
 
 		return view('kost.search-price',compact('dataKosts'));
 	}
+
+	public function searchByFacilites()
+	{
+		$facilities = Kost::groupBy('roomFacility')->pluck('roomFacility');
+
+		return view('kost.search-facilities',compact('facilities'));
+	}
+
+	public function searchByFacilitesResults(Request $request)
+	{
+		$facilities = Kost::groupBy('roomFacility')->pluck('roomFacility');
+
+		$dataKosts = Kost::where('roomFacility',$request->get('facility'))->get();
+
+		return view('kost.search-facilities',compact(['dataKosts','facilities']));
+	}
 }
