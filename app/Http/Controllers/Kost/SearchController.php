@@ -75,8 +75,16 @@ class SearchController extends Controller
 	{
 		$facilities = Kost::groupBy('roomFacility')->pluck('roomFacility');
 
-		$dataKosts = Kost::where('roomFacility',$request->get('facility'))->get();
+		$query = [];
 
+		foreach($request->all() as $key => $value)
+		{
+			array_push($query,$value);
+		}
+
+		$dataKosts = Kost::whereIn('roomFacility',$query)->get();
+
+		
 		return view('kost.search-facilities',compact(['dataKosts','facilities']));
 	}
 }

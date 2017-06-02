@@ -12,11 +12,11 @@
             	{{ csrf_field() }}
               	{{ method_field('POST') }}
                     <div class="form-group col-sm-12">
-                        <select name="facility" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                            @foreach($facilities as $facility)
-                                <option value="{{ $facility }}">{{ $facility }}</option>
-                            @endforeach
-                        </select>
+                       @foreach($facilities as $key => $value)
+                            <div class="col-sm-4">
+                                 <input type="checkbox" name="{{ $key }}" value="{{ $value }}"> <span>{{ $value }}</span><br>
+                            </div>
+                       @endforeach
                     </div>
 
                     <div class="form-group col-sm-12">
