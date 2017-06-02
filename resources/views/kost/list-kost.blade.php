@@ -1,5 +1,5 @@
 <div class="row">
-@if($dataKosts->count() > 0)
+@if(!empty($dataKosts))
 	@foreach($dataKosts as $kost)
 	  <div class="col-sm-6 col-md-4">
 		    <div class="thumbnail">

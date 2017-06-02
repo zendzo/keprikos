@@ -8,14 +8,27 @@
 		</div>
 		<div class="box-body">
 			<div class="col-md-12 col-sm-12">
-				<form action="">
-					<div class="form-group">
-						<input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200" data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="red" id="slider">
+				<form class="form-horizontal" action="{{ route('search.price.results') }}" enctype="multipart/form-data" method="POST">
+            	{{ csrf_field() }}
+              	{{ method_field('POST') }}
+					<div class="form-group ">
+						<input class="form-control" type="text" name="min" placeholder="minimal">
 					</div>
-					<button class="btn btn-primary">Cari</button>
+					<div class="form-group ">
+						<input class="form-control" type="text" name="max" placeholder="maksismal">
+					</div>
+					<div class="form-group col-sm-12">
+						<button class="btn btn-block btn-lg btn-primary">Cari</button>
+					</div>
 				</form>
 			</div>
 		</div>
+	</div>
+</div>
+{{-- list search results --}}
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+		@include('kost.list-kost')
 	</div>
 </div>
 @endsection

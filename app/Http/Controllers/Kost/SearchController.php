@@ -37,4 +37,16 @@ class SearchController extends Controller
     {
     	return view('kost.search-price');
     }
+
+	public function searchByPriceResults(Request $request)
+	{
+		$input = $request->all();
+		
+		$min = $input['min'];
+		$max = $input['max'];
+
+		$dataKosts = Kost::whereBetween('priceMonthly',[$min,$max])->get();
+
+		return view('kost.search-price',compact('dataKosts'));
+	}
 }
