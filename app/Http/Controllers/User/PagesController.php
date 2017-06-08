@@ -11,7 +11,7 @@ class PagesController extends Controller
 {
     public function getDashboard()
     {
-    	$dataKosts = Auth::user()->kosts;
+    	$dataKosts = Auth::user()->kosts->sortByDesc('created_at');
 
     	$kostId = [];
 

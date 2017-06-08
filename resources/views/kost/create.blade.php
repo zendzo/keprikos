@@ -25,7 +25,7 @@
                   <label for="inputAddress" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                    <input class="gllpLocationName form-control" name="address" id="inputAddress" placeholder="(ex: Jl. Ir. Rahman Hakim)" type="text" required>
+                    <input class="gllpLocationName form-control" name="address" value="{{ old('address') }}" id="inputAddress" placeholder="(ex: Jl. Ir. Rahman Hakim)" type="text" required>
                   </div>
                 </div>
               <!-- form group -->
@@ -33,7 +33,7 @@
                   <label for="inputOwner" class="col-sm-2 control-label">Pemilik Kost</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="owner" id="inputOwner" placeholder="(ex: Rio / isi dengan (-) jika kosong)" type="text" value="{{ Auth::user()->username }}" required>
+                    <input class="form-control" name="owner" value="{{ old('owner') }}" id="inputOwner" placeholder="(ex: Rio / isi dengan (-) jika kosong)" type="text" value="{{ Auth::user()->username }}" required>
                   </div>
                 </div>
                 <!-- form group -->
@@ -41,7 +41,7 @@
                   <label for="inputOwnerPhone" class="col-sm-2 control-label">Nomor Kontak Pemilik</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="ownerPhone" id="inputOwnerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="text" required>
+                    <input class="form-control" name="ownerPhone" value="{{ old('ownerPhone') }}" id="inputOwnerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="text" required>
                   </div>
                 </div>
                 <!-- form group -->
@@ -49,7 +49,7 @@
                   <label for="inputManager" class="col-sm-2 control-label">Pengelola Kost</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="manager" id="inputManager" placeholder="(ex: Rio / isi dengan (-) jika kosong)" type="text" value=" {{ Auth::user()->username }}" required>
+                    <input class="form-control" name="manager" value="{{ old('manager') }}" id="inputManager" placeholder="(ex: Rio / isi dengan (-) jika kosong)" type="text" value=" {{ Auth::user()->username }}" required>
                   </div>
                 </div>
                 <!-- form group -->
@@ -57,7 +57,7 @@
                   <label for="inputManagerPhone" class="col-sm-2 control-label">Nomor Kontak Pengelola</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="managerPhone" id="inputManagerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="text" required>
+                    <input class="form-control" name="managerPhone" value="{{ old('managerPhone') }}" id="inputManagerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="text" required>
                   </div>
                 </div>
                 <!-- form group -->
@@ -65,7 +65,7 @@
                   <label for="inputPhone" class="col-sm-2 control-label">Nomor Telp Kost</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="phone" id="inputPhone" placeholder="(ex: ex: 08xxx / isi dengan (-) jika kosong)" type="text" required>
+                    <input class="form-control" name="phone" value="{{ old('phone') }}" id="inputPhone" placeholder="(ex: ex: 08xxx / isi dengan (-) jika kosong)" type="text" required>
                   </div>
                 </div>
                 <!-- Info Upload Photo -->
@@ -121,38 +121,16 @@
 						</div>
 					</div><!-- form group 4 google map -->
                 </div><!-- end div google map -->
-                <!-- form group -->
-                <div class="form-group">
-                  <label for="inputPriceDaily" class="col-sm-2 control-label">Harga Sewa Harian</label>
-
-                  <div class="col-sm-10">
-                    <input class="form-control" name="priceDaily" id="inputPriceDaily" placeholder="(ex: 200000)" type="text" required>
-                  </div>
-                </div>
-                <!-- form group -->
-                <div class="form-group">
-                  <label for="inputPriceWeekly" class="col-sm-2 control-label">Harga Sewa Mingguan</label>
-
-                  <div class="col-sm-10">
-                    <input class="form-control" name="priceWeekly" id="inputPriceWeekly" placeholder="(ex: 500000)" type="text" required>
-                  </div>
-                 </div>
+               {{-- remove sewa harian mingguan --}}
                 <!-- form group -->
                 <div class="form-group">
                   <label for="inputPriceMonthly" class="col-sm-2 control-label">Harga Sewa Bulanan</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="priceMonthly" id="inputPriceMonthly" placeholder="(ex: 15000000)" type="text" required>
+                    <input class="form-control" name="priceMonthly" value="{{ old('priceMonthly') }}" id="inputPriceMonthly" placeholder="(ex: 15000000)" type="text" required>
                   </div>
                 </div>
-                 <!-- form group -->
-                <div class="form-group">
-                  <label for="inputPriceYearly" class="col-sm-2 control-label">Harga Sewa Tahunan</label>
-
-                  <div class="col-sm-10">
-                    <input class="form-control" name="priceYearly" id="inputPriceYearly" placeholder="(ex: 20000000)" type="text" required>
-                  </div>
-                </div>
+                 {{-- remove sewa tahunan --}}
                 <!-- form group -->
                 <div class="form-group">
                   <label for="inputMinPay" class="col-sm-2 control-label">Pembayaran Minimal</label>
@@ -179,7 +157,7 @@
                   <label for="inputPriceRemark" class="col-sm-2 control-label">Keterangan Biaya Lain</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" name="priceRemark" id="inputPriceRemark" placeholder="(ex: Minimal bayar untuk berapa bulan di depan) *Maks 255 karakter" type="text"></textarea>
+                    <textarea class="form-control" name="priceRemark" value="{{ old('priceRemark') }}" id="inputPriceRemark" placeholder="(ex: Minimal bayar untuk berapa bulan di depan) *Maks 255 karakter" type="text"></textarea>
                   </div>
                 </div>
                 <!-- form group -->
@@ -187,7 +165,7 @@
                   <label for="inputRoomCount" class="col-sm-2 control-label">Jumlah Kamar</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="roomCount" id="inputRoomCount" placeholder="(ex: 10)" type="number" required="number">
+                    <input class="form-control" name="roomCount" value="{{ old('roomcount') }}" id="inputRoomCount" placeholder="(ex: 10)" type="number" required="number">
                   </div>
                 </div>
                 <!-- form group -->
@@ -195,7 +173,7 @@
                   <label for="inputSize" class="col-sm-2 control-label">Luas Kamar</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="size" id="inputSize" placeholder="(ex: 3x3)" type="text" required>
+                    <input class="form-control" name="size" value="{{ old('size') }}" id="inputSize" placeholder="(ex: 3x3)" type="text" required>
                   </div>
                 </div>
                 <!-- form group -->
@@ -228,7 +206,7 @@
                   <label for="inputRoomAvailable" class="col-sm-2 control-label">Jumlah Kamar Kosong</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="roomAvailable" id="inputRoomAvailable" placeholder="(ex: 5) *sesuaikan dengan status kamar kosong saat ini (isi 0 jika penuh)" type="number" required="number">
+                    <input class="form-control" name="roomAvailable" value="{{ old('roomAvailable') }}" id="inputRoomAvailable" placeholder="(ex: 5) *sesuaikan dengan status kamar kosong saat ini (isi 0 jika penuh)" type="number" required="number">
                   </div>
                 </div>
                 <!-- form group -->
@@ -272,7 +250,7 @@
                   <label for="InputOtherRoomFacility" class="col-sm-2 control-label">Fasilitas Kamar Lainya</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" name="otherRoomFacility" id="InputOtherRoomFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
+                    <textarea class="form-control" name="otherRoomFacility" value="{{ old('otherRoomFacility') }}" id="InputOtherRoomFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
                   </div>
                 </div>
                 <!-- form group -->
@@ -299,7 +277,7 @@
                   <label for="InputOtherBathRoomFacility" class="col-sm-2 control-label">Fasilitas Kamar Mandi Lainya</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" name="otherBathRoomFacility" id="InputOtherRoomFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
+                    <textarea class="form-control" name="otherBathRoomFacility" value="{{ old('otherBathRoomFacility') }}" id="InputOtherRoomFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
                   </div>
                 </div>
                <!-- form group -->
@@ -340,7 +318,7 @@
                   <label for="InputOtherGeneralFacility" class="col-sm-2 control-label">Fasilitas Umum Lainya</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" name="otherGeneralFacility" id="InputOtherGeneralFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
+                    <textarea class="form-control" name="otherGeneralFacility" value="{{ old('otherGeneralFacility') }}" id="InputOtherGeneralFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
                   </div>
                 </div>
                 <!-- form group -->
@@ -365,7 +343,7 @@
                   <label for="InputOtherNearByFacility" class="col-sm-2 control-label">Akses Lingkungan Lainya</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" name="otherNearByFacility" id="InputOtherNearByFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
+                    <textarea class="form-control" name="otherNearByFacility" value="{{ old('otherNearByFacility') }}" id="InputOtherNearByFacility" placeholder="(ex: Detail Fasilitas Lainya) *Maks 255 karakter" type="text"></textarea>
                   </div>
                 </div>
                 <!-- form group -->
@@ -374,7 +352,7 @@
 
                   <div class="col-sm-10">
                   <span class="text-info">Ada batasan jam kunjung atau tidak? / Harga sudah include listrik atau belum? / Ada biaya tambahan atau tidak untuk parkir mobil? / Ada cleaning room atau tidak? jika ada, ada tambahan biaya atau tidak? / Ada fasilitas laundry atau tidak? / Ada akses kunci 24 jam tidak? / Untuk wifi menggunakan voucher atau tidak? / Untuk fasilitas dapur sudah include tabung gas atau iuran?/ Tamu menginap ada tambahan biaya atau tidak?/ Pembayaran dilakukan setiap bulan atau 3 bulan sekali?/ DP minimal berapa?/ Ada fasilitas lain yang akan di promosikan atau tidak? </span>
-                    <textarea class="form-control" name="remarks" id="InputRemarks" placeholder="*Maks 255 karakter" type="text"></textarea>
+                    <textarea class="form-control" name="remarks" value="{{ old('remarks') }}" id="InputRemarks" placeholder="*Maks 255 karakter" type="text"></textarea>
                   </div>
                 </div>
                 <!-- form group -->
@@ -382,7 +360,7 @@
                   <label for="InputDescriptions" class="col-sm-2 control-label">Deskripsi Kost</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" name="descriptions" id="InputDescriptions" placeholder="*Maks 255 karakter" type="text"></textarea>
+                    <textarea class="form-control" name="descriptions" value="{{ old('descriptions') }}" id="InputDescriptions" placeholder="*Maks 255 karakter" type="text"></textarea>
                   </div>
                 </div>
                 <!-- form group -->
@@ -390,7 +368,7 @@
                   <label for="inputNameAgent" class="col-sm-2 control-label">Nama Penginput</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="nameAgent" id="inputNameAgent" type="text" required="text" value="{{ Auth::user()->username }}">
+                    <input class="form-control" name="nameAgent" value="{{ old('nameAgent') }}" id="inputNameAgent" type="text" required="text" value="{{ Auth::user()->username }}">
                   </div>
                 </div>
                 <!-- form group -->
@@ -398,7 +376,7 @@
                   <label for="inputEmailAgent" class="col-sm-2 control-label">Email Penginput</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="emailAgent" id="inputEmailAgent" type="text" required="text" value=" {{ Auth::user()->email }} ">
+                    <input class="form-control" name="emailAgent" value="{{ old('emailAgent') }}" id="inputEmailAgent" type="text" required="text" value=" {{ Auth::user()->email }} ">
                   </div>
                 </div>
                 <!-- form group -->
@@ -406,7 +384,7 @@
                   <label for="inputHpAgent" class="col-sm-2 control-label">No.Hp Penginput</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="hpAgent" id="inputHpAgent" placeholder="(ex: 08xxxxxxx)" type="text" required="text">
+                    <input class="form-control" name="hpAgent" value="{{ old('hpAgent') }}" id="inputHpAgent" placeholder="(ex: 08xxxxxxx)" type="text" required="text">
                   </div>
                 </div>
                 <!-- form group -->
