@@ -88,7 +88,6 @@ class KostController extends Controller
                 ->with('message', 'Data kost telah tersimpan!')
                 ->with('status','success')
                 ->with('type','success');
-        // return $input;
     }
 
     /**

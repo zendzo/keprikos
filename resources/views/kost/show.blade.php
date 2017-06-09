@@ -135,23 +135,11 @@
 								<div class="panel-body">
 									<table class="table table-bordered">
 										<tr>
-											<th>Rp. {{ number_format($kost->priceYearly ,2,',','.') }}</th>
-											<th>/tahun</th>
-										</tr>
-										<tr>
 											<th>Rp. {{ number_format($kost->priceMonthly ,2,',','.') }}</th>
 											<th>/bulan</th>
 										</tr>
 										<tr>
-											<th>Rp. {{ number_format($kost->priceWeekly ,2,',','.') }}</th>
-											<th>/minggu</th>
-										</tr>
-										<tr>
-											<th>Rp. {{ number_format($kost->priceDaily ,2,',','.') }}</th>
-											<th>/hari</th>
-										</tr>
-										<tr>
-											<th colspan="2" class="text-success">Pembayaran min : Rp.  {{ $kost->minPay * $kost->priceMonthly }}</th>
+											<th colspan="2" class="text-success">Pembayaran min : Rp.  {{ number_format($kost->minPay * $kost->priceMonthly,2,',','.') }}</th>
 										</tr>
 									</table>
 									@if(Auth::check())
