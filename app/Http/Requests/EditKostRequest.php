@@ -36,8 +36,6 @@ class EditKostRequest extends FormRequest
             'longitude'  => 'required',
             'subdistrict'   => 'required',
             'city'  => 'required',
-            'priceDaily'    => 'required',
-            'priceWeekly'   => 'required',
             'priceMonthly'  => 'required',
             'priceYearly'   => 'required',
             'roomCount' => 'required',
