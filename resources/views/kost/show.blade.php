@@ -143,7 +143,10 @@
 											<th>/tahun</th>
 										</tr>
 										<tr>
-											<th colspan="2" class="text-success">Pembayaran min : Rp.  {{ number_format($kost->minPay * $kost->priceMonthly,2,',','.') }}</th>
+											<th colspan="2" class="text-success text-center">Pembayaran min : Rp.  {{ number_format($kost->minPay * $kost->priceMonthly,2,',','.') }}</th>
+										</tr>
+										<tr>
+											<th colspan="2" class="text-success text-center">(untuk penyewaan selama {{ $kost->minPay }} bulan)</th>
 										</tr>
 									</table>
 									@if(Auth::check())
