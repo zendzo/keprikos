@@ -45,7 +45,7 @@
                   <label for="inputOwnerPhone" class="col-sm-2 control-label">Nomor Kontak Pemilik</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="ownerPhone" id="inputOwnerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="text" required
+                    <input class="form-control" name="ownerPhone" id="inputOwnerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="number" required
                     value="{{ $kost->ownerPhone }}">
                   </div>
                 </div>
@@ -63,7 +63,7 @@
                   <label for="inputManagerPhone" class="col-sm-2 control-label">Nomor Kontak Pengelola</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="managerPhone" id="inputManagerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="text" required
+                    <input class="form-control" name="managerPhone" id="inputManagerPhone" placeholder="(ex: 08xxx / isi dengan (-) jika kosong)" type="number" required
                     value="{{ $kost->managerPhone }}">
                   </div>
                 </div>
@@ -72,7 +72,7 @@
                   <label for="inputPhone" class="col-sm-2 control-label">Nomor Telp Kost</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="phone" id="inputPhone" placeholder="(ex: ex: 08xxx / isi dengan (-) jika kosong)" type="text" required
+                    <input class="form-control" name="phone" id="inputPhone" placeholder="(ex: ex: 08xxx / isi dengan (-) jika kosong)" type="number" required
                     value="{{ $kost->phone }}">
                   </div>
                 </div>
@@ -131,28 +131,13 @@
 						</div>
 					</div><!-- form group 4 google map -->
                 </div><!-- end div google map -->
-                <!-- form group -->
-                <div class="form-group">
-                  <label for="inputPriceDaily" class="col-sm-2 control-label">Harga Sewa Harian</label>
-
-                  <div class="col-sm-10">
-                    <input class="form-control" name="priceDaily" id="inputPriceDaily" placeholder="(ex: 200000)" type="text" required value="{{ $kost->priceDaily }}">
-                  </div>
-                </div>
-                <!-- form group -->
-                <div class="form-group">
-                  <label for="inputPriceWeekly" class="col-sm-2 control-label">Harga Sewa Mingguan</label>
-
-                  <div class="col-sm-10">
-                    <input class="form-control" name="priceWeekly" id="inputPriceWeekly" placeholder="(ex: 500000)" type="text" required value="{{ $kost->priceWeekly }}">
-                  </div>
-                 </div>
+                {{-- remove sewa harian dan mingguan --}}
                 <!-- form group -->
                 <div class="form-group">
                   <label for="inputPriceMonthly" class="col-sm-2 control-label">Harga Sewa Bulanan</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="priceMonthly" id="inputPriceMonthly" placeholder="(ex: 15000000)" type="text" required value="{{ $kost->priceMonthly }}">
+                    <input class="form-control" name="priceMonthly" id="inputPriceMonthly" placeholder="(ex: 15000000)" type="number" required value="{{ $kost->priceMonthly }}">
                   </div>
                 </div>
                  <!-- form group -->
@@ -160,7 +145,7 @@
                   <label for="inputPriceYearly" class="col-sm-2 control-label">Harga Sewa Tahunan</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="priceYearly" id="inputPriceYearly" placeholder="(ex: 20000000)" type="text" required value="{{ $kost->priceYearly }}">
+                    <input class="form-control" name="priceYearly" id="inputPriceYearly" placeholder="(ex: 20000000)" type="number" required value="{{ $kost->priceYearly }}">
                   </div>
                 </div>
                 <!-- form group -->
@@ -482,7 +467,7 @@
                   <label for="inputHpAgent" class="col-sm-2 control-label">No.Hp Penginput</label>
 
                   <div class="col-sm-10">
-                    <input class="form-control" name="hpAgent" id="inputHpAgent" placeholder="(ex: 08xxxxxxx)" type="text" required="text"
+                    <input class="form-control" name="hpAgent" id="inputHpAgent" placeholder="(ex: 08xxxxxxx)" type="number" required="text"
                     value="{{ $kost->hpAgent }}">
                   </div>
                 </div>
