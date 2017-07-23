@@ -23,6 +23,14 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $order = Order::where('user_id',Auth::user()->id)
+                    ->where('created_at','<',Carbon::today()->subDays(2))->get();;
+
+        foreach ($order as $item) {
+            $item->canceled = true;
+            $item->save();
+        }
+
         $orders = Auth::user()->orders;
 
         return view('order.index',compact('orders'));

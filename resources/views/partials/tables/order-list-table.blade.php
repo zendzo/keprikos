@@ -27,6 +27,7 @@
                   <th>Tgl. Masuk</th>
                   <th>Tgl. Keluar</th>
                   <th>Tgl. Pesan</th>
+                  <th>Dibatalkan</th>
                 </tr>
 	                @forelse($orders as $order)
 	                	<tr>
@@ -49,7 +50,12 @@
 	                				<td><span class="label label-success">{{$order->day_in }}</span></td>
 	                				<td><span class="label label-success">{{ $order->day_out }}</span></td>
 	                			@endif
-	                		<td>{{ $order->created_at->toDayDateTimeString() }}</td>
+                      <td>{{ $order->created_at }}</td>
+	                		@if($order->canceled)
+                        <td><span class="label label-warning">Batal</span></td>
+                      @else
+                        <td><span class="label label-primary">Belum</span></td>
+                      @endif
 	                	</tr>
 	                @empty
 	                @endforelse

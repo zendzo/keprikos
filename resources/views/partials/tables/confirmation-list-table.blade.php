@@ -50,9 +50,9 @@
 	                				<td><span class="label label-success">{{$order->day_in }}</span></td>
 	                				<td><span class="label label-success">{{ $order->day_out }}</span></td>
 	                			@endif
-	                		<td>{{ $order->created_at->toFormattedDateString() }}</td>
+	                		<td>{{ $order->created_at }}</td>
                       <td>
-                        @if(is_null($order->paid_at))
+                        @if(is_null($order->paid_at) && $order->canceled == false)
                           <a href="#" class="btn btn-info" data-toggle="modal" data-target="#modal">
                             Confirm <i class="fa fa-check" aria-hidden="true"></i>
                           </a>
@@ -107,6 +107,8 @@
                               </div><!-- modal footer -->
                             </div>
                           </div>
+                        @elseif($order->canceled == true)
+                          <a href="#" class="btn btn-warning" disabled>Canceled</a>
                         @else
                           <a href="#" class="btn btn-success" disabled>Confirmed</a>
                         @endif
