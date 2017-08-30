@@ -32,8 +32,8 @@ class ConfirmationOderController extends Controller
 
         $orders = Order::whereIn('kost_id',$kostId)->get();
 
-        $canceled = Order::where('user_id',Auth::user()->id)
-                    ->where('created_at','<',Carbon::today()->subDays(2))->get();;
+        $canceled = Order::whereNull('paid_at')->where('user_id',Auth::user()->id)
+                    ->where('created_at','<',Carbon::today()->subDays(2))->get();
 
         foreach ($canceled as $item) {
             if ($item->canceled == false) {

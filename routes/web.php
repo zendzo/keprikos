@@ -148,3 +148,20 @@ Route::get('/confirmation-strore',[
 	'as'=>'confirmation.store',
 	'uses'=>'ConfirmationOderController@store'
 	]);
+
+Route::get('/test',function(){
+
+	$dataKosts = Auth::user()->kosts->sortByDesc('created_at');
+
+    	$kostId = [];
+
+    	foreach ($dataKosts as $kost) {
+    		array_push($kostId, $kost['id']);
+    	}
+
+        $jatuhTempo = App\Order::whereIn('kost_id',$kostId)->where('day_out','=',Carbon\Carbon::now()->today())->get();
+
+        foreach ($jatuhTempo as $kost) {
+            App\Kost::where('id',$kost->kost_id)->increment('roomAvailable',$kost->qty);
+        }
+});

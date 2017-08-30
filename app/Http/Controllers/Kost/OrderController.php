@@ -24,6 +24,7 @@ class OrderController extends Controller
     public function index()
     {
         $order = Order::where('user_id',Auth::user()->id)
+                    ->whereNull('paid_at')
                     ->where('created_at','<',Carbon::today()->subDays(2))->get();;
 
         foreach ($order as $item) {

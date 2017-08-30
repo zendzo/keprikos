@@ -54,7 +54,7 @@
 	                		@if($order->canceled)
                         <td><span class="label label-warning">Batal</span></td>
                       @else
-                        <td><span class="label label-primary">Belum</span></td>
+                        <td><span class="label label-primary">Tidak</span></td>
                       @endif
 	                	</tr>
 	                @empty
